@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	
+
+
+	<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+	<form class="container formulaire " id="formulaire" action="" method="post">
+		<h2>Formulaire de contact</h2>
+		<div class="form-group">
+			<label for="nom">Entrez votre nom <span>*</span></label>
+			<input type="text" class="form-control" name="nom" id="nom" required>
+
+			<label for="prenom">Entrez votre prénom</label>
+			<input type="text" class="form-control" name="prenom" id="prenom">
+
+			<label for="email">Entrez votre email <span>*</span> </label>
+			<input type="email" class="form-control" name="email" id="email" required>
+
+			<label for="societe">Entrez le nom de votre société</label>
+			<input type="text" class="form-control" name="societe" id="societe">
+
+			<label for="tel">Entrez votre numéro de téléphone</label>
+			<input type="number" class="form-control" name="tel" id="tel">
+
+			<label for="message">Message<span>*</span></label>
+			<textarea  class="form-control" name="message" required id="message"></textarea>
+
+			<button type="submit" id="button" class="btn btn-primary mt-3 bouton">Envoyez</button>
+
+
+		</div>
+	</form>
+
+<?php  
+try
+{
+	$dbconnect = new PDO('mysql:host=localhost;dbname=cv;charset=utf8', 'root', '',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
+}
+catch (Exception $e)
+{
+        die('Erreur : ' . $e->getMessage());
+}
+
+
+if (isset($_POST['nom'])) {
+	$req =$dbconnect->prepare( "INSERT INTO contact(nom,prenom,email,societe,tel,message)VALUES(:nom,:prenom,:email,:societe,:tel,:message) ");
+
+
+	if (empty($_POST['tel'])) {
+		$_POST['tel'] == 1;
+	}
+	$req->execute(array(
+		'nom'=> $_POST['nom'],
+		'prenom'=> $_POST['prenom'],
+		'email'=> $_POST['email'],
+		'societe'=> $_POST['societe'],
+		'tel'=> $_POST['tel'],
+		'message'=> $_POST['message']
+
+
+	));
+	if ($req->rowCount() == 1) {
+	?>
+	<script>
+		$('form').addClass('messageConfirm').html("merci d'avoir laissé un message je vous recontacterai le plus tot possible !")
+	</script>
+	<?php  
+}
+	
+}
+
+
+	
+	?>
+</body>
+</html>	
