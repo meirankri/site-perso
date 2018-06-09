@@ -1,0 +1,134 @@
+h1, h2, h3{
+			text-align: center;
+			font-family: comic sans ms;
+			
+		}
+		.web, .techa, h3{
+			cursor: pointer;
+			margin-bottom: 0;
+		}
+		.esic h3, .g2r h3{
+			padding:1rem;
+			margin-right: 1rem;
+		}
+		h1{
+			margin-top: 7rem;
+		}
+		h1 p{
+			font-size: 2rem;
+			color: #4f4b4b; 
+		}
+		body{
+			padding-top: 4em;
+
+		}
+		
+		
+		.auto{
+			background-color: #94a0dd;
+			
+		}
+		.techcom, .techa, .g2r, .techno{
+
+			padding: 1rem;
+			background-color:#FFA200;
+			
+			
+		}
+		.bakery{
+			width: 7rem;
+			cursor: pointer;
+		}
+
+		.webcom, .web, .esic, .esicfor{
+			padding: 1rem;
+			background-color: #53a1f4;
+			color: white;
+		}
+
+		button:hover{
+			opacity: 0.5;
+		}
+		button:active{
+			opacity:1;
+		}
+		
+		hr{
+			height: 0.1rem;
+			background-color: #42c5f4;
+
+
+		}
+		.g2r{
+			background-color: #FFA200;
+		}
+		.esic{
+			background-color: #53a1f4;
+		}
+		.formulaire{
+			margin: auto;
+		}
+		span{
+			font-size: 1.3rem;
+		}
+		.formulaire span{
+			color: red;
+		}
+		@media screen and (min-width:800px) and (max-width: 5000px) {
+		 .pt{
+		    margin-left: 150px;
+		  }
+		}
+		@media screen and (max-width: 800px) {
+		 .pt{
+		    margin-left: 5rem;
+		  }
+		}
+		.fa-futbol, .fa-basketball-ball{
+			padding-top: 1rem;
+			cursor: pointer;
+			position: relative;
+		}
+		.tech article p{
+			margin-bottom: 0.5em;
+		}
+		img,h1,.webcom,.techcom, .techno, .esicfor{
+			display: none;
+		}
+		.grid-container{
+			display: grid;
+			grid-column-gap: 10%;
+			grid-template-columns: auto auto auto;
+			margin-left: 15%;
+
+		}
+		/*.footh, .basketh, .bakeryh{
+			display: none;
+		}*/
+		.bakery{
+			position: relative;
+		}
+		footer div{
+			text-align:center;
+			background-color: black;
+			height: 2rem;
+			padding-bottom: 0;
+			margin-bottom: 0;
+			color: white; 
+		}
+		
+		
+		.copy{
+			width: 10px;
+			height: 5px;
+		}
+		.arrowLeft{
+			float: left;
+		}
+		div #contact{
+		font-size: 2rem;
+		color: green;
+	}
+
+
+		
